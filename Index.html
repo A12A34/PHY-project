@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Physics Calculator</title>
+    <link rel="stylesheet" href="css.css" />
+</head>
+
+<body>
+    <main>
+        <h2>Physics Calculator</h2>
+        <div class="calculator-container">
+
+            <!-- Forces in Equilibrium Section -->
+            <section class="section">
+                <h3>Forces in Equilibrium</h3>
+                <label for="eqP">Force P (N)</label>
+                <input type="number" id="eqP" placeholder="Enter Force P">
+                <label for="eqQ">Force Q (N)</label>
+                <input type="number" id="eqQ" placeholder="Enter Force Q">
+                <label for="eqAngle">Angle (°)</label>
+                <input type="number" id="eqAngle" placeholder="Enter angle in degrees">
+                <label for="eqW">Weight (N)</label>
+                <input type="number" id="eqW" placeholder="Enter weight (in N)" step="any">
+                <button id="checkEquilibriumBtn">Check Equilibrium</button>
+                <div class="result-text">Status: <span id="resultEquilibrium"></span></div>
+                <div class="result-text">Mass: <span id="resultMass"></span></div>
+                <div class="result-text">Resultant Force: <span id="EqulibriumResultantForce"></span></div>
+                <div class="formula">
+                    Equilibrium: √(P<sup>2</sup> + Q<sup>2</sup> + 2PQ cos θ) ≈ Weight
+                </div>
+                <div class="formula">
+                    Mass: m = Weight / 9.8
+                </div>
+            </section>
+
+            <!-- Resultant Force Section -->
+            <section class="section">
+                <h3>Resultant Force</h3>
+                <label for="p">Forceh P (N)</label>
+                <input type="number" id="p" placeholder="Enter Force P">
+                <label for="q">Force Q (N)</label>
+                <input type="number" id="q" placeholder="Enter Force Q">
+                <label for="angle">Angle (°)</label>
+                <input type="number" id="angle" placeholder="Enter angle in degrees">
+                <button id="calcForceBtn">Calculate</button>
+                <div class="result-text">Result: <span id="resultForce"></span></div>
+                <div class="result-text">Direction: <span id="resultDirection"></span></div>
+                <div class="formula">
+                    Magnitude: √(P<sup>2</sup> + Q<sup>2</sup> + 2PQ cos θ)
+                </div>
+                <div class="formula">
+                    Direction (°): tan<sup>-1</sup>((Q sin θ)/(P + Q cos θ))
+                </div>
+            </section>
+
+            <!-- Resultant Force from 3 Forces Section -->
+            <section class="section">
+                <h3>Resultant Force from 3 Forces</h3>
+                <label for="F1">Force F1 (N)</label>
+                <input type="number" id="F1" placeholder="Enter Force F1">
+                <label for="F2">Force F2 (N)</label>
+                <input type="number" id="F2" placeholder="Enter Force F2">
+                <label for="F3">Force F3 (N)</label>
+                <input type="number" id="F3" placeholder="Enter Force F3">
+                <label for="angle1">Angle 1 (°)</label>
+                <input type="number" id="angle1" placeholder="Enter Angle 1">
+                <label for="angle2">Angle 2 (°)</label>
+                <input type="number" id="angle2" placeholder="Enter Angle 2">
+                <label for="angle3">Angle 3 (°)</label>
+                <input type="number" id="angle3" placeholder="Enter Angle 3">
+                <button id="calc3ForcesBtn">Calculate Resultant Force</button>
+                <div class="result-text">Resultant Force: <span id="resultantForce"></span></div>
+                <div class="result-text">Direction: <span id="resultantDirection"></span></div>
+                <div class="formula">
+                    Fx = F cos θ | Fy = F sin θ
+                </div>
+                <div class="formula">
+                    R = √((F1x + F2x + F3x)<sup>2</sup> + (F1y + F2y + F3y)<sup>2</sup>)
+                </div>
+                <div class="formula">
+                    Direction: tan<sup>-1</sup>(EFy / EFx)
+                </div>
+            </section>
+
+            <!-- Scientific Converter Section -->
+            <section class="section">
+                <h3>Scientific Converter</h3>
+                <label for="sciNumber">Enter Number</label>
+                <input type="number" id="sciNumber" placeholder="Enter number">
+                <label for="sciType">Conversion Type</label>
+                <select id="sciType">
+                    <option value="toScientific">To Scientific Notation</option>
+                    <option value="fromScientific">From Scientific Notation</option>
+                </select>
+                <button id="convertScientificBtn">Convert</button>
+                <div class="result-text">Result: <span id="resultSci"></span></div>
+            </section>
+
+            <!-- Unit Converter Section -->
+            <section class="section">
+                <h3>Unit Converter</h3>
+                <label for="unitValue">Enter Value</label>
+                <input type="number" id="unitValue" placeholder="Enter value">
+                <label for="unitType">Conversion Type</label>
+                <select id="unitType">
+                    <option value="metersToFeet">Meters to Feet</option>
+                    <option value="feetToMeters">Feet to Meters</option>
+                    <option value="kilometersToMiles">Kilometers to Miles</option>
+                    <option value="milesToKilometers">Miles to Kilometers</option>
+                    <option value="kgToPounds">Kilograms to Pounds</option>
+                    <option value="poundsToKg">Pounds to Kilograms</option>
+                    <option value="celsiusToFahrenheit">Celsius to Fahrenheit</option>
+                    <option value="fahrenheitToCelsius">Fahrenheit to Celsius</option>
+
+                    <!-- Newly added unit conversions -->
+                    <option value="newtonsToPounds">Newtons to Pounds</option>
+                    <option value="poundsToNewtons">Pounds to Newtons</option>
+                    <option value="joulesToCalories">Joules to Calories</option>
+                    <option value="caloriesToJoules">Calories to Joules</option>
+                    <option value="wattsToHorsepower">Watts to Horsepower</option>
+                    <option value="horsepowerToWatts">Horsepower to Watts</option>
+                    <option value="pascalsToPSI">Pascals to PSI</option>
+                    <option value="psiToPascals">PSI to Pascals</option>
+                    <option value="litersToGallons">Liters to Gallons</option>
+                    <option value="gallonsToLiters">Gallons to Liters</option>
+                    <option value="sqmToSqft">Square Meters to Square Feet</option>
+                    <option value="sqftToSqm">Square Feet to Square Meters</option>
+                    <option value="cubicMetersToCubicFeet">Cubic Meters to Cubic Feet</option>
+                    <option value="cubicFeetToCubicMeters">Cubic Feet to Cubic Meters</option>
+                    <option value="kmhToMs">km/h to m/s</option>
+                    <option value="msToKmh">m/s to km/h</option>
+                    <option value="atmospheresToPascals">Atmospheres to Pascals</option>
+                    <option value="pascalsToAtmospheres">Pascals to Atmospheres</option>
+                </select>
+                <button id="convertUnitBtn">Convert</button>
+                <div class="result-text">Result: <span id="resultUnit"></span></div>
+            </section>
+
+            <!-- Rectangular Components Section -->
+            <section class="section">
+                <h3>Rectangular Components</h3>
+                <label for="forceInput">Force (F)</label>
+                <input type="number" id="forceInput" placeholder="Enter force (F)">
+                <label for="directionInput">Direction (°)</label>
+                <input type="number" id="directionInput" placeholder="Enter direction in degrees">
+                <button id="calcVectorBtn">Calculate Components</button>
+                <div class="result-text">Fx: <span id="resultFx"></span></div>
+                <div class="formula">Fx = F cos θ</div>
+                <div class="result-text">Fy: <span id="resultFy"></span></div>
+                <div class="formula">Fy = F sin θ</div>
+            </section>
+            <section class="section">
+                <h3>Pythagoras</h3>
+                <label for="A">Enter Force A</label>
+                <input type="number" id="A" placeholder="Ente A">
+                <label for="B"></label>
+                <input type="number" id="B" placeholder="Enter B">
+                <button id="calcA+B">Calculate</button>
+                <div class="result-text">Result: <span id="resultA+B"></span></div>
+                <div class="formula">
+                    C = √(A<sup>2</sup> + B<sup>2</sup>)
+                </div>
+            </section>
+            <!-- Add this section within the calculator-container div -->
+            <section class="section">
+                <h3>Logarithm Calculator</h3>
+                <label for="logBase">Base</label>
+                <input type="number" id="logBase" placeholder="Enter base (b)">
+                <label for="logNumber">Number</label>
+                <input type="number" id="logNumber" placeholder="Enter number (a)">
+                <button id="calcLogBtn">Calculate Logarithm</button>
+                <div class="result-text">Result: <span id="logResult"></span></div>
+                <div class="formula">
+                    Formula: log<sub>b</sub>(a) = ln(a) / ln(b)
+                </div>
+            </section>
+            <!-- Hooke's Law Section -->
+            <section class="section">
+                <h3>Hooke's Law</h3>
+                <label for="hookeF">Restoring Force (F) in N</label>
+                <input type="number" id="hookeF" placeholder="Enter F">
+                <label for="hookeK">Spring Constant (k) in N/m</label>
+                <input type="number" id="hookeK" placeholder="Enter k">
+                <label for="hookeDeltaL">Change in Length (ΔL) in m</label>
+                <input type="number" id="hookeDeltaL" placeholder="Enter ΔL">
+                <button id="calcHookeBtn">Calculate</button>
+                <div class="result-text">Result: <span id="resultHooke"></span></div>
+                <div class="formula">
+                    Formula: F = k × ΔL
+                </div>
+            </section>
+            <!-- Quadratic Formula Section -->
+            <section class="section">
+                <h3>Quadratic Formula Solver</h3>
+                <label for="quadA">Enter A</label>
+                <input type="number" id="quadA" placeholder="Enter A">
+                <label for="quadB">Enter B</label>
+                <input type="number" id="quadB" placeholder="Enter B">
+                <label for="quadC">Enter C</label>
+                <input type="number" id="quadC" placeholder="Enter C">
+                <button id="calcQuadraticBtn">Solve</button>
+                <div class="result-text">X₁: <span id="quadResult1"></span></div>
+                <div class="result-text">X₂: <span id="quadResult2"></span></div>
+                <div class="result-text">Step: <span id="quadstep"></span></div>
+                <div class="formula">
+                    X = (-B ± √(B² - 4AC)) / 2A
+                </div>
+            </section>
+            <!-- Add this inside the calculator-container div -->
+            <section class="section">
+                <h3>Binary ↔ Decimal Converter</h3>
+                <label for="conversionInput">Input Value</label>
+                <input type="text" id="conversionInput" placeholder="Enter binary/decimal">
+                <label for="conversionType">Conversion Type</label>
+                <select id="conversionType">
+                    <option value="binaryToDecimal">Binary to Decimal</option>
+                    <option value="decimalToBinary">Decimal to Binary</option>
+                </select>
+                <button id="convertBinDecBtn">Convert</button>
+                <div class="result-text">Result: <span id="resultBinDec"></span></div>
+                <div class="formula">
+                    Binary → Decimal: Σ (bit<sub>n</sub> × 2<sup>n</sup>)
+                </div>
+                <div class="formula">
+                    Decimal → Binary: Divide by 2, track remainders
+                </div>
+            </section>
+            <!-- Mass, Weight, and Gravity Section -->
+            <section class="section">
+                <h3>Mass, Weight, and Gravity</h3>
+                <label for="mass">Mass (kg)</label>
+                <input type="number" id="mass" placeholder="Enter mass (kg)">
+                <label for="weight">Weight (N)</label>
+                <input type="number" id="weight" placeholder="Enter weight (N)">
+                <label for="gravity">Gravity (m/s²)</label>
+                <input type="number" id="gravity" placeholder="Enter gravity (m/s²)" value="9.8" step="any">
+                <button id="calcMassWeightGravityBtn">Calculate</button>
+                <div class="result-text">Result: <span id="resultMassWeightGravity"></span></div>
+                <div class="formula">
+                    Weight: W = m × g <br>
+                    Mass: m = W / g <br>
+                    Gravity: g = W / m
+                </div>
+            </section>
+            <!-- Add this section within the calculator-container div -->
+            <section class="section">
+                <h3>Advanced Equation Solver</h3>
+                <label for="eqType">Equation Type</label>
+                <select id="eqType">
+                    <option value="quadratic">Quadratic (ax² + bx + c = 0)</option>
+                    <option value="cubic">Cubic (ax³ + bx² + cx + d = 0)</option>
+                    <option value="cubicSpecial">Cubic (ax³ + bx² + cx = 0)</option> <!-- ADD THIS LINE -->
+                    <option value="linear2">Linear System (2 Variables)</option>
+                    <option value="linear3">Linear System (3 Variables)</option>
+                </select>
+
+                <!-- Quadratic Equation Inputs -->
+                <div class="equation-inputs" id="quadraticInputs">
+                    <label for="qa">A</label>
+                    <input type="number" id="qa" placeholder="Enter coefficient a">
+                    <label for="qb">B</label>
+                    <input type="number" id="qb" placeholder="Enter coefficient b">
+                    <label for="qc">C</label>
+                    <input type="number" id="qc" placeholder="Enter coefficient c">
+                </div>
+
+                <!-- Cubic Equation Inputs -->
+                <div class="equation-inputs" id="cubicInputs" style="display: none;">
+                    <label for="ca">A</label>
+                    <input type="number" id="ca" placeholder="Enter coefficient a">
+                    <label for="cb">B</label>
+                    <input type="number" id="cb" placeholder="Enter coefficient b">
+                    <label for="cc">C</label>
+                    <input type="number" id="cc" placeholder="Enter coefficient c">
+                    <label for="cd">D</label>
+                    <input type="number" id="cd" placeholder="Enter coefficient d">
+                </div>
+
+                <!-- Cubic (ax³ + bx² + cx = 0) Inputs -->
+                <div class="equation-inputs" id="cubicSpecialInputs" style="display: none;">
+                    <label for="csa">A</label>
+                    <input type="number" id="csa" placeholder="Enter coefficient a">
+                    <label for="csb">B</label>
+                    <input type="number" id="csb" placeholder="Enter coefficient b">
+                    <label for="csc">C</label>
+                    <input type="number" id="csc" placeholder="Enter coefficient c">
+                </div>
+
+                <!-- 2-Variable Linear System Inputs -->
+                <div class="equation-inputs" id="linear2Inputs" style="display: none;">
+                    <div class="equation-group">
+                        <h4>Equation 1</h4>
+                        <input type="number" id="a1" placeholder="a₁">
+                        <span>X + </span>
+                        <input type="number" id="b1" placeholder="b₁">
+                        <span>Y = </span>
+                        <input type="number" id="c1" placeholder="c₁">
+                    </div>
+                    <div class="equation-group">
+                        <h4>Equation 2</h4>
+                        <input type="number" id="a2" placeholder="a₂">
+                        <span>X + </span>
+                        <input type="number" id="b2" placeholder="b₂">
+                        <span>Y = </span>
+                        <input type="number" id="c2" placeholder="c₂">
+                    </div>
+                </div>
+
+                <!-- 3-Variable Linear System Inputs -->
+                <div class="equation-inputs" id="linear3Inputs" style="display: none;">
+                    <div class="equation-group">
+                        <h4>Equation 1</h4>
+                        <input type="number" id="a1_3" placeholder="a₁">
+                        <span>X + </span>
+                        <input type="number" id="b1_3" placeholder="b₁">
+                        <span>Y + </span>
+                        <input type="number" id="c1_3" placeholder="c₁">
+                        <span>Z = </span>
+                        <input type="number" id="d1_3" placeholder="d₁">
+                    </div>
+                    <div class="equation-group">
+                        <h4>Equation 2</h4>
+                        <input type="number" id="a2_3" placeholder="a₂">
+                        <span>X + </span>
+                        <input type="number" id="b2_3" placeholder="b₂">
+                        <span>Y + </span>
+                        <input type="number" id="c2_3" placeholder="c₂">
+                        <span>Z = </span>
+                        <input type="number" id="d2_3" placeholder="d₂">
+                    </div>
+                    <div class="equation-group">
+                        <h4>Equation 3</h4>
+                        <input type="number" id="a3_3" placeholder="a₃">
+                        <span>X + </span>
+                        <input type="number" id="b3_3" placeholder="b₃">
+                        <span>Y + </span>
+                        <input type="number" id="c3_3" placeholder="c₃">
+                        <span>Z = </span>
+                        <input type="number" id="d3_3" placeholder="d₃">
+                    </div>
+                </div>
+
+                <button id="solveBtn">Solve</button>
+                <div class="result-text">Solution: <span id="equationResult"></span></div>
+            </section>
+        </div>
+    </main>
+
+    </div>
+    <div class=formula>
+        Made by: Ali Alhasan Mohammed Maki<br> class: 10IT3 <br> NV: 24214
+    </div>
+    <script src="scripts.js"></script>
+</body>
+
+</html>
