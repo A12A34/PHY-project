@@ -1,0 +1,253 @@
+/* CSS Variables for Modern Theme */
+:root {
+    --primary-font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --bg-gradient-start: #5a72d8;
+    --bg-gradient-end: #2d3a7c;
+    --btn-gradient-start: #2563eb;
+    --btn-gradient-end: #1d4ed8;
+    --btn-hover-start: #1e40af;
+    --btn-hover-end: #1e3a8a;
+    --card-bg: rgba(255, 255, 255, 0.15);
+    --card-border: rgba(255, 255, 255, 0.2);
+    --text-color: #f8fafc;
+    --accent-color: #fcd34d;
+    --transition-timing: 0.3s;
+}
+
+/* Modern Reset & Base Styles */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--primary-font);
+    line-height: 1.6;
+    background: linear-gradient(160deg, var(--bg-gradient-start), var(--bg-gradient-end));
+    color: var(--text-color);
+    min-height: 100vh;
+    padding: 2rem;
+    animation: fadeIn 1s ease-out;
+}
+
+/* Layout Improvements */
+main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.calculator-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+/* Typography Enhancements */
+h2 {
+    font-size: 2.8rem;
+    letter-spacing: -0.05em;
+    margin-bottom: 2rem;
+    position: relative;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--accent-color);
+    margin: 1rem auto;
+    border-radius: 2px;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent-color);
+}
+
+/* Card Modernization */
+.section {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: transform var(--transition-timing) ease, box-shadow var(--transition-timing) ease;
+}
+
+.section:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Input & Form Enhancements */
+.input-group {
+    margin-bottom: 1.2rem;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+input,
+select {
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: all var(--transition-timing) ease;
+}
+
+input:focus,
+select:focus {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(252, 211, 77, 0.2);
+    outline: none;
+}
+
+/* Button Modernization */
+button {
+    background: linear-gradient(135deg, var(--btn-gradient-start), var(--btn-gradient-end));
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition-timing) ease;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+    opacity: 0;
+    transition: opacity var(--transition-timing) ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+button:hover::before {
+    opacity: 1;
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+/* Result & Formula Styling */
+.result-text {
+    padding: 1rem;
+    margin: 1rem 0;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    animation: fadeInUp 0.4s ease-out;
+}
+
+.result-text span {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.formula {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    padding: 0.8rem;
+    margin-top: 1rem;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Modern Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cardAppear {
+    from { opacity: 0; transform: scale(0.95) rotate(-2deg); }
+    to { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .section {
+        max-width: 100%;
+    }
+}
+
+/* Error State */
+input:invalid {
+    border-color: #ef4444;
+    animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+}
+
+/* Loading State */
+.loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
